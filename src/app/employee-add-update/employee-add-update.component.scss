@@ -1,0 +1,25 @@
+.content{
+    padding: 20px;
+}
+
+.row{
+// display: flex;
+// flex-direction: column;
+gap:20px;
+width:480px
+}
+
+mat-form-field{
+    // width: 100%;
+    margin: 4px;
+}
+
+.action{
+    padding: 0px 25px 25px;
+
+    button {
+        flex: 1;
+    }
+
+    
+}

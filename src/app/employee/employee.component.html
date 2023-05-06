@@ -1,0 +1,83 @@
+<mat-toolbar color="primary">
+    
+    <span>EMPLOYEE PAYROLL</span>
+    <span class="example-spacer"></span>
+    <button mat-raised-button (click)="openAddEmployeeInfo()" >Add Employee</button>
+   
+  </mat-toolbar>
+
+  
+   <mat-form-field  id>
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Ram" #input>
+  </mat-form-field> 
+<!-- 
+  <div class="box">
+    <input type="checkbox" id="check"/>
+    <div class="search-box">
+      <input placeholder="Search" name="search"/>
+      <label for="check" class="icon">
+        <i class="fas fa-search"></i>
+      </label>
+    </div>
+  </div> -->
+  
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+  
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+  
+      <!-- Progress Column -->
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> FirstName </th>
+        <td mat-cell *matCellDef="let row"> {{row.firstName}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> LastName </th>
+        <td mat-cell *matCellDef="let row"> {{row.lastName}} </td>
+      </ng-container>
+  
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+        <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+      </ng-container>
+      <ng-container matColumnDef="dob">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> DOB </th>
+        <td mat-cell *matCellDef="let row"> {{row.dob | date}} </td>
+      </ng-container>
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
+        <td mat-cell *matCellDef="let row"> {{row.gender}} </td>
+      </ng-container>
+      <ng-container matColumnDef="education">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Education </th>
+        <td mat-cell *matCellDef="let row"> {{row.education}} </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <td mat-cell *matCellDef="let row"> 
+          <button mat-icon-button color="primary" (click)="openEditEmployeeInfo(row)"><mat-icon >edit</mat-icon> </button>
+          <button mat-icon-button color="warn" (click)="deleteEmployeeInfo(row.id)"><mat-icon>delete</mat-icon></button>
+           </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter ""</td>
+      </tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10]" aria-label="Select page of users"></mat-paginator>
+  </div>
+  
+  
